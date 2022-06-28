@@ -20,6 +20,9 @@ namespace EntityDemo.entities
 
         public decimal Price { set; get; }
 
+        // Tao Foreign key
+        public Category Category { get; set; }
+
         public void PrintInfo()
         {
             Console.WriteLine($"{ProductId,2} {Name,10} - {Price}");

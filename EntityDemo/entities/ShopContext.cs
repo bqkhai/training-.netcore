@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace EntityDemo.entities
 {
-    internal class ProductDbContext : DbContext
+    internal class ShopContext : DbContext
     {
         // Logging
         ILoggerFactory loggerFactory = LoggerFactory.Create(builder => {
@@ -19,6 +19,7 @@ namespace EntityDemo.entities
         });
 
         public DbSet<Product> products { set; get; }
+        public DbSet<Category> categories { set; get; }
 
         private readonly String connectionString = @"
             Data Source=KHAIBQ3-D8\SQLEXPRESS;
