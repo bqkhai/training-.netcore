@@ -90,8 +90,8 @@ namespace EntityDemo
 
         static void Main(string[] args)
         {
+            DropDatabase();
             Createdatabase();
-            //DropDatabase();
             //InsertProduct();
             //ReadProducts();
             //RenameProduct(1,"abc");

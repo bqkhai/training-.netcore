@@ -33,5 +33,26 @@ namespace EntityDemo.entities
             optionsBuilder.UseLoggerFactory(loggerFactory);
             optionsBuilder.UseSqlServer(connectionString);
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // Fluent API
+            modelBuilder.Entity<Product>(entity =>
+            {
+                // Table mapping
+                entity.ToTable("products");
+                // PK
+                entity.HasKey(p => p.ProductId);
+                // Index
+                entity.HasIndex(p => p.Price).HasDatabaseName("index-sanpham");
+                // Relative
+                entity.HasOne(p => p.Category)
+                      .WithMany()
+                      .HasForeignKey("FK-products")
+                      .OnDelete(DeleteBehavior.Cascade);
+            });
+        }
     }
 }
