@@ -8,17 +8,20 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntityDemo.entities
 {
-    [Table("products")]
+    //[Table("products")]
     internal class Product
     {
-        [Key]
+        //[Key]
         public int ProductId { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        //[Required]
+        //[StringLength(50)]
         public string Name { get; set; }
 
         public decimal Price { set; get; }
+
+        // Tao Foreign key
+        public virtual Category Category { get; set; }
 
         public void PrintInfo()
         {

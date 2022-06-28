@@ -12,7 +12,7 @@ namespace EntityDemo
          */
         static void Createdatabase()
         {
-            using var dbContext = new ProductDbContext();
+            using var dbContext = new ShopContext();
             string dbname = dbContext.Database.GetDbConnection().Database;
 
             var res = dbContext.Database.EnsureCreated();
@@ -29,15 +29,15 @@ namespace EntityDemo
         /**
          * Delete database
          */
-        //static void Deletedatabase()
-        //{
-        //    var dbContext = new ProductDbContext();
-        //    dbContext.Database.EnsureDeleted();
-        //}
+        static void DropDatabase()
+        {
+            var dbcontext = new ShopContext();
+            dbcontext.Database.EnsureDeleted();
+        }
 
         static void InsertProduct()
         {
-            using var dbcontext = new ProductDbContext();
+            using var dbcontext = new ShopContext();
 
             var p1 = new Product()
             {
@@ -51,7 +51,7 @@ namespace EntityDemo
 
         static void ReadProducts()
         {
-            using var dbcontext = new ProductDbContext();
+            using var dbcontext = new ShopContext();
 
             //var products = dbcontext.products.ToList();
             //products.ForEach(product => product.PrintInfo());
@@ -67,13 +67,13 @@ namespace EntityDemo
         // Delete
         static void DeleteProduct()
         {
-            var dbcontext = new ProductDbContext();
+            var dbcontext = new ShopContext();
         }
 
         // Update
         static void RenameProduct(int id, string newName)
         {
-            var dbcontext = new ProductDbContext();
+            var dbcontext = new ShopContext();
             var product = (from p in dbcontext.products 
                            where (p.ProductId == id) 
                            select p)
@@ -90,6 +90,7 @@ namespace EntityDemo
 
         static void Main(string[] args)
         {
+            DropDatabase();
             Createdatabase();
             //InsertProduct();
             //ReadProducts();
