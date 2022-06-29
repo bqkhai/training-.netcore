@@ -1,0 +1,70 @@
+﻿@model IEnumerable<demo.Models.Student>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h4>Students List</h4>
+<div>
+    <a asp-action="Create" class="btn btn-sm btn-success">
+        <i class="fa-solid fa-plus"></i> Create
+    </a>
+</div>
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dob)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Class)
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dob)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Class)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-sm btn-warning">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </a> |
+                <a asp-action="Details" asp-route-id="@item.ID" class="btn btn-sm btn-info">
+                    <i class="fa-solid fa-eye"></i>
+                </a> |
+                <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-sm btn-danger">
+                    <i class="far fa-trash-alt"></i>
+                </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
