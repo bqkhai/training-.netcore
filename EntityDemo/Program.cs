@@ -90,6 +90,7 @@ namespace EntityDemo
 
         static void Main(string[] args)
         {
+            // flc
             DropDatabase();
             Createdatabase();
             InsertProduct();
