@@ -92,9 +92,10 @@ namespace EntityDemo
         {
             DropDatabase();
             Createdatabase();
-            //InsertProduct();
-            //ReadProducts();
-            //RenameProduct(1,"abc");
+            InsertProduct();
+            ReadProducts();
+            RenameProduct(1,"abc");
+            // abcabcv
         }
     }
 }
